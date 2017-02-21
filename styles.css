@@ -48,3 +48,9 @@ ul {
 .app-title a:visited {
     color: white;
 }
+header {
+    display: flex;
+    background: red;
+    justify-content: space-between;
+    align-items: center;
+}
