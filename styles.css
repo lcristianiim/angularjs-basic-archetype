@@ -53,4 +53,8 @@ header {
     background: red;
     justify-content: space-between;
     align-items: center;
+    background: #455A64;
+}
+svg {
+    margin-right: 40px;
 }
