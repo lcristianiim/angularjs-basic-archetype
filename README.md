@@ -13,4 +13,4 @@ This app demonstrates the basic usage of views and controllers. In this app you 
 * ng-submit and ng-model
 
 ## Demonstration
-[Live example](162.243.86.132:4689)
+[Live example](http://162.243.86.132:4689)
