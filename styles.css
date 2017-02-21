@@ -45,7 +45,7 @@ ul {
     background: #455A64;
     color: #e6e6e6;
 }
-.app-title a:visited {
+.app-title a:visited, .app-title a {
     color: white;
 }
 header {
