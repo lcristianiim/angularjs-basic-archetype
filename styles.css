@@ -1,0 +1,50 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+footer {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #353535;
+    color: #e6e6e6;
+}
+.active {
+    font-weight: bold}
+ul {
+    list-style: none}
+.app {
+    flex:1;
+    display: flex;
+}
+.action, .app-menu {
+    padding: 50px;
+}
+.app-menu {
+    background: aliceblue;
+}
+.action {
+    background: mintcream;
+    flex: 1;
+}
+.action .create-todo {
+    padding: 40px;
+}
+.app-title {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    min-height: 50px;
+    padding-left: 40px;
+    background: #455A64;
+    color: #e6e6e6;
+}
+.app-title a:visited {
+    color: white;
+}
