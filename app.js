@@ -1,5 +1,17 @@
-angular.module("headerApp", [])
-    .controller("mainController", function ($scope) {
+angular.module("headerApp", [
+    "ui.router",
+    "categories"
+])
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state("headerApp", {
+                url: "",
+                abstract: true
+            });
+        $urlRouterProvider.otherwise('/');
+    })
+
+    .controller("MainController", function ($scope) {
 
         $scope.categories = [
             {"id": 0, "name": "Tickets"},
@@ -20,9 +32,9 @@ angular.module("headerApp", [])
             {"id": 8, "title": "Fruits", "category": "Food" },
             {"id": 9, "title": "Mobile phone", "category": "Bils" }
         ];
-        
+
         $scope.currentCategory = null;
-        
+
         $scope.setCurrentCategory = function (category) {
             console.log("Category set to: ", category);
             $scope.currentCategory = category;
@@ -30,7 +42,7 @@ angular.module("headerApp", [])
 
         $scope.isCurrentClass = function (category) {
             return $scope.currentCategory != null && $scope.currentCategory.name === category.name;
-        }
+        };
 
         // Create and edit
         $scope.isCreating = false;
@@ -98,12 +110,12 @@ angular.module("headerApp", [])
         }
 
         function setEditedItem(item) {
-           $scope.editedItem = angular.copy(item);
+            $scope.editedItem = angular.copy(item);
         }
 
         function deleteItem(item) {
             _.remove($scope.items, function(i) {
-               return i.id == item.id;
+                return i.id == item.id;
             });
         }
 
@@ -113,7 +125,7 @@ angular.module("headerApp", [])
         }
 
         function setItemCategoryToCurrentCategory(item) {
-           item.category = $scope.currentCategory;
+            item.category = $scope.currentCategory;
         }
 
         $scope.startCreating = startCreating;

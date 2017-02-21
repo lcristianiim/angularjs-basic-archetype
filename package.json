@@ -1,0 +1,22 @@
+{
+  "name": "ticketer",
+  "version": "1.0.0",
+  "description": "[![AngularJS](http://i.imgur.com/4DTvpLb.png)](http://162.243.86.132:4689)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcristianiim/angularjs-basic-archetype.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lcristianiim/angularjs-basic-archetype/issues"
+  },
+  "homepage": "https://github.com/lcristianiim/angularjs-basic-archetype#readme",
+  "dependencies": {
+    "angular-ui-router": "^0.4.2"
+  }
+}

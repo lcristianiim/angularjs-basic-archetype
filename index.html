@@ -4,100 +4,36 @@
     <meta charset="UTF-8">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>-->
+    <script src="node_modules/angular/angular.js"></script>
+    <!--<script src="node_modules/angular-route/angular-route.js"></script>-->
+    <!--<script src="js/angular-ui-router.min.js"></script>-->
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
     <script src="categories/categories.js"></script>
     <script src="categories/items/items.js"></script>
-    <script src="categories/items/item-create.js"></script>
-    <script src="categories/edit/item-edit.js"></script>
+    <script src="categories/items/create/item-create.js"></script>
+    <script src="categories/items/edit/item-edit.js"></script>
 
     <script src="common/models/items-model.js"></script>
     <script src="common/models/categories-model.js"></script>
+
 
     <link rel="stylesheet" href="styles.css">
 
 
     <script src="app.js"></script>
     <title > {{ title }}</title>
-    <style>
-    </style>
 </head>
-<body ng-controller="mainController">
-<header>
-    <h3 class="app-title"><a href="#" ng-click="setCurrentCategory(null)">Cool App</a></h3>
-    <a href="https://github.com/lcristianiim/angularjs-basic-archetype">
-        <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill="white" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-    </a>
-</header>
-<div class="app">
-    <hr>
-
-    <div class="app-menu">
-        <h3>Categories</h3>
-        <ul>
-            <li>
-                <a href="#" ng-click="setCurrentCategory(null)">All items</a>
-            </li>
-            <hr>
-            <li ng-repeat="category in categories">
-                <a href="#" ng-class="{'active':isCurrentClass(category)}" ng-click="setCurrentCategory(category)">{{ category.name }}</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="action">
-
-        <h3>Items</h3>
-
-        <ul>
-            <li ng-repeat="item in items | filter:{category:currentCategory.name}">
-                {{ item.title }}
-                <a href="#" ng-click="setEditedItem(item);startEditing()">Edit</a>
-                <a href="#" ng-click="deleteItem(item)">Delete</a>
-            </li>
-        </ul>
-
-
-        <div ng-if="shouldShowCreating()" class="create-todo">
-            <hr>
-            <h3><a href="#" ng-click="startCreating()"> + Create item</a></h3>
-
-            <form ng-if="isCreating" ng-submit="createItem(newItem);">
-                <input ng-model="newItem.title" type="text" placeholder="title">
-
-                <select ng-model="newItem.category">
-                    <option ng-repeat="category in categories"  value="{{category.name}}">{{ category.name }}</option>
-                </select>
-                <!--<input ng-model="newItem.category" type="text" placeholder="category">-->
-
-                <input type="submit" value="Create">
-                <input ng-click="cancelCreating();" type="button" value="Cancel">
-            </form>
+<body ng-controller="MainController">
+    <div class="app-container">
+        <div class="app-menu" ui-view="categories">
 
         </div>
+        <div class="action" ui-view="items">
 
-        <div ng-if="shouldShowEditing()" class="edit-toto">
-            <hr>
-            <h3>Edit {{ editedItem.title }}</h3>
-            <form ng-submit="updateItem(editedItem)">
-                <input ng-model="editedItem.title" type="text" placeholder="title">
-
-                <select ng-model="editedItem.category">
-                    <option ng-repeat="category in categories" value="{{category.name}}">{{ category.name }}</option>
-                </select>
-
-                <!--<input ng-model="editedItem.category" type="text" placeholder="category">-->
-
-                <input type="submit" value="Edit">
-                <input ng-click="cancelEditing()" type="button" value="Cancel">
-            </form>
         </div>
-
     </div>
-
-</div>
-<footer>Powerd by AngularJs</footer>
-
 
 </body>
 </html>
