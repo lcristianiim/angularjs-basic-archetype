@@ -1,9 +1,8 @@
 angular.module("categories", [
-    "ticketer.models.categories"
 ])
     .config(function($stateProvider) {
        $stateProvider
-           .state("ticketer.categories", {
+           .state("categories", {
                url: "/",
                views: {
                   "categories@": {
