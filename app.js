@@ -1,11 +1,11 @@
-angular.module("headerApp", [
+angular.module("Ticketer", [
     "ui.router",
     "categories",
-    "items"
+    "categories.items"
 ])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state("headerApp", {
+            .state("ticketer", {
                 url: "",
                 abstract: true
             });
