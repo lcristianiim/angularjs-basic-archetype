@@ -38,6 +38,8 @@ angular.module("Ticketer", [
 
         $scope.setCurrentCategory = function (category) {
             $scope.currentCategory = category;
+
+            // $state.go("ticketer.categories.items", {category:category.name})
         };
 
         $scope.isCurrentClass = function (category) {

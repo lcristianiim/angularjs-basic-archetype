@@ -19,7 +19,6 @@ angular.module("categories.items", [
     })
 
     .controller("ItemsController", function($scope, $stateParams) {
-        console.log("stateParams ", $stateParams);
-        $scope.currentCategory = $stateParams.category;
+        $scope.currentCategoryName = $stateParams.category;
     })
 ;
