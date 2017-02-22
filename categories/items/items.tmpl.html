@@ -1,9 +1,9 @@
-<h1> {{ currentCategoryName }}</h1>
+<h1> {{ items.currentCategoryName }}</h1>
 
 <h3>Items</h3>
 
 <ul>
-    <li ng-repeat="item in items | filter:{category:currentCategory.name}">
+    <li ng-repeat="item in itemsListController.items | filter:{category:currentCategory.name}">
         {{ item.title }}
         <a href="#" ng-click="setEditedItem(item);startEditing()">Edit</a>
         <a href="#" ng-click="deleteItem(item)">Delete</a>

@@ -12,13 +12,16 @@ angular.module("categories.items", [
                 views: {
                     "items@": {
                         templateUrl: "categories/items/items.tmpl.html",
-                        controller: "ItemsController"
+                        controller: "ItemsController as itemsListController"
                     }
                 }
             })
     })
 
-    .controller("ItemsController", function($scope, $stateParams) {
-        $scope.currentCategoryName = $stateParams.category;
+    .controller("ItemsController", function($stateParams, ItemsModel) {
+        var itemsListController = this;
+
+        itemsListController.currentCategoryName = $stateParams.category;
+        itemsListController.items = ItemsModel.getItems();
     })
 ;
