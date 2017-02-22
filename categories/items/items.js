@@ -8,7 +8,7 @@ angular.module("categories.items", [
     .config(function($stateProvider){
         $stateProvider
             .state("ticketer.categories.items", {
-                url: "/categories/:category",
+                url: "categories/:category",
                 views: {
                     "items@": {
                         templateUrl: "categories/items/items.tmpl.html",
@@ -19,7 +19,7 @@ angular.module("categories.items", [
     })
 
     .controller("ItemsController", function($scope, $stateParams) {
-        console.log("The state Parames", $stateParams);
-        $scope.currentCategoryName = $stateParams.category;
+        console.log("stateParams ", $stateParams);
+        $scope.currentCategory = $stateParams.category;
     })
 ;

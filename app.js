@@ -12,7 +12,7 @@ angular.module("Ticketer", [
         $urlRouterProvider.otherwise('/');
     })
 
-    .controller("MainController", function ($scope) {
+    .controller("MainController", function ($scope, $state) {
 
         $scope.categories = [
             {"id": 0, "name": "Tickets"},
@@ -37,7 +37,6 @@ angular.module("Ticketer", [
         $scope.currentCategory = null;
 
         $scope.setCurrentCategory = function (category) {
-            console.log("Category set to: ", category);
             $scope.currentCategory = category;
         };
 

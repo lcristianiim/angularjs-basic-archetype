@@ -6,7 +6,7 @@ angular.module("categories", [
 ])
     .config(function($stateProvider) {
        $stateProvider
-           .state("categories", {
+           .state("ticketer.categories", {
                url: "/",
                views: {
                   "categories@": {
