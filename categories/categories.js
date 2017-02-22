@@ -1,4 +1,8 @@
 angular.module("categories", [
+    "categories.items.create",
+    "categories.items.edit",
+    "ticketer.models.categories",
+    "ticketer.models.items"
 ])
     .config(function($stateProvider) {
        $stateProvider
@@ -17,9 +21,5 @@ angular.module("categories", [
            })
     })
     .controller("CategoriesController", function categoriesController($scope) {
-
-    })
-    .controller("ItemsController", function itemsController($scope) {
-
     })
 ;
