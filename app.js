@@ -1,6 +1,7 @@
 angular.module("headerApp", [
     "ui.router",
-    "categories"
+    "categories",
+    "items"
 ])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
