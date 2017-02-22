@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="headerApp" lang="en">
+<html ng-app="Ticketer" lang="en">
 <head>
     <meta charset="UTF-8">
 
@@ -24,12 +24,12 @@
     <title > {{ title }}</title>
 </head>
 <body ng-controller="MainController">
-    <div class="app-container">
+    <div class="app">
         <div class="app-menu" ui-view="categories">
 
         </div>
         <div class="action" ui-view="items">
-
+            <h1>{{ currentCategoryName }}</h1>
         </div>
     </div>
 
