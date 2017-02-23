@@ -1,12 +1,13 @@
 angular.module("ticketer.models.items", [
 
 ])
-    .service("ItemsModel", function($http) {
+    .service("ItemsModel", function($http, $q) {
         var model = this,
 
             URLS = {
                 FETCH: "data/items.json"
-            };
+            },
+            items;
 
         function extract(result) {
             return result.data;
@@ -18,7 +19,13 @@ angular.module("ticketer.models.items", [
         }
 
         model.getItems = function () {
-            return $http.get(URLS.FETCH).then(cacheItems)
+            return (items) ? $q.when(items) : $http.get(URLS.FETCH).then(cacheItems);
+        };
+
+        model.createItem = function (item) {
+            // simulating backend
+            item.id = items.length;
+            items.push(item);
         }
     })
 ;
