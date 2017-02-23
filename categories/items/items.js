@@ -17,14 +17,24 @@ angular.module("categories.items", [
             })
     })
 
-    .controller("ItemsController", function($stateParams, ItemsModel) {
+    .controller("ItemsController", function($stateParams, ItemsModel, CategoriesModel) {
         var itemsListController = this;
 
-        itemsListController.currentCategoryName = $stateParams.category;
+        CategoriesModel.setCurrentCategory($stateParams.category);
+
+        CategoriesModel.getCategories()
+            .then(function (categories) {
+                itemsListController.categories = categories;
+            })
+        ;
 
         ItemsModel.getItems()
-            .then(function(result) {
-                itemsListController.items = result;
+            .then(function(items) {
+                itemsListController.items = items;
             })
+        ;
+
+        itemsListController.getCurrentCategory = CategoriesModel.getCurrentCategory;
+        itemsListController.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName;
     })
 ;
