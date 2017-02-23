@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="create-todo">
+    <form>
+        <input ng-model="createItemsController.newItem.title" type="text" placeholder="title">
 
-</body>
-</html>
+        <select ng-model="createItemsController.newItem.category">
+            <option ng-repeat="category in createItemsController.categories" value="{{category.name}}">{{ category.name }}</option>
+        </select>
+
+        <input type="submit" ng-click="createItemsController.createItem(createItemsController.newItem)" value="Create">
+        <input ng-click="createItemsController.cancelCreating();" type="button" value="Cancel">
+    </form>
+</div>
