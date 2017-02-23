@@ -10,16 +10,19 @@ angular.module("categories", [
                url: "/",
                views: {
                   "categories@": {
-                      controller: "CategoriesController",
-                      templateUrl: "categories/categories.tmpl.html"
+                      templateUrl: "categories/categories.tmpl.html",
+                      controller: "CategoriesController as categoriesListController"
                   },
                    "items@": {
-                       controller: "ItemsController",
-                       templateUrl: "categories/items/items.tmpl.html"
+                       templateUrl: "categories/items/items.tmpl.html",
+                       controller: "ItemsController"
                    }
                }
            })
     })
-    .controller("CategoriesController", function categoriesController($scope) {
+    .controller("CategoriesController", function categoriesController(CategoriesModel) {
+        var categoriesListController = this;
+
+        categoriesListController.categories = CategoriesModel.getCategories();
     })
 ;

@@ -4,7 +4,7 @@
         <a href="#" ng-click="setCurrentCategory(null)">All items</a>
     </li>
     <hr>
-    <li ng-repeat="category in categories">
+    <li ng-repeat="category in categoriesListController.categories">
         <a href="#" ui-sref="ticketer.categories.items({category:category.name})" ng-class="{'active':isCurrentClass(category)}" ng-click="setCurrentCategory(category)">{{ category.name }}</a>
     </li>
 </ul>

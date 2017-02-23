@@ -14,14 +14,6 @@ angular.module("Ticketer", [
 
     .controller("MainController", function ($scope, $state) {
 
-        $scope.categories = [
-            {"id": 0, "name": "Tickets"},
-            {"id": 1, "name": "Taxes"},
-            {"id": 2, "name": "Bils"},
-            {"id": 3, "name": "Food"}
-        ];
-
-
         $scope.currentCategory = null;
 
         $scope.setCurrentCategory = function (category) {

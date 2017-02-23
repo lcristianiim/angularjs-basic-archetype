@@ -1,5 +1,4 @@
 angular.module("categories.items", [
-    "ui.router",
     "categories.items.create",
     "categories.items.edit",
     "ticketer.models.categories",
