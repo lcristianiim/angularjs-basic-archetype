@@ -8,7 +8,8 @@ angular.module("ticketer.models.categories", [
                FETCH: "data/categories.json"
            },
 
-           categories;
+           categories,
+           currentCategory;
 
         function extract(result) {
             return result.data;
@@ -20,7 +21,7 @@ angular.module("ticketer.models.categories", [
         }
 
         model.getCategories = function () {
-            return (categories) ? q.when(categories) : $http.get(URLS.FETCH).then(cacheCategories);
+            return (categories) ? $q.when(categories) : $http.get(URLS.FETCH).then(cacheCategories);
         };
 
         model.getCategoryByName = function (categoryName){
@@ -41,6 +42,21 @@ angular.module("ticketer.models.categories", [
                     })
             }
             return deffered.promise;
+        }
+
+        model.setCurrentCategory = function(categoryName) {
+            return model.getCategoryByName(categoryName)
+                .then(function (category) {
+                    currentCategory = category;
+                })
+        }
+
+        model.getCurrentCategory = function () {
+            return currentCategory;
+        }
+
+        model.getCurrentCategoryName = function () {
+            return currentCategory ? currentCategory.name : "";
         }
     })
 ;
