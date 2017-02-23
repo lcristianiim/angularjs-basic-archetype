@@ -1,47 +1,18 @@
-<h1> {{ itemsListController.currentCategoryName }}</h1>
+<h1> {{ itemsListController.getCurrentCategoryName() }}</h1>
 
 <h3>Items</h3>
 
 <ul>
-    <li ng-repeat="item in itemsListController.items | filter:{category:currentCategory.name}">
+    <li ng-repeat="item in itemsListController.items | filter:{category:itemsListController.getCurrentCategoryName()}">
         {{ item.title }}
-        <a href="#" ng-click="setEditedItem(item);startEditing()">Edit</a>
+        <a href="#" ui-sref="ticketer.categories.items.edit({itemId:item.id})">Edit</a>
         <a href="#" ng-click="deleteItem(item)">Delete</a>
     </li>
 </ul>
 
-
-<div ng-if="shouldShowCreating()" class="create-todo">
+<ui-view ng-if="itemsListController.getCurrentCategory()"
+         class="create-todo"
+         ui-sref="ticketer.categories.items.create">
     <hr>
-    <h3><a href="#" ng-click="startCreating()"> + Create item</a></h3>
-
-    <form ng-if="isCreating" ng-submit="createItem(newItem);">
-        <input ng-model="newItem.title" type="text" placeholder="title">
-
-        <select ng-model="newItem.category">
-            <option ng-repeat="category in categories"  value="{{category.name}}">{{ category.name }}</option>
-        </select>
-        <!--<input ng-model="newItem.category" type="text" placeholder="category">-->
-
-        <input type="submit" value="Create">
-        <input ng-click="cancelCreating();" type="button" value="Cancel">
-    </form>
-
-</div>
-
-<div ng-if="shouldShowEditing()" class="edit-toto">
-    <hr>
-    <h3>Edit {{ editedItem.title }}</h3>
-    <form ng-submit="updateItem(editedItem)">
-        <input ng-model="editedItem.title" type="text" placeholder="title">
-
-        <select ng-model="editedItem.category">
-            <option ng-repeat="category in categories" value="{{category.name}}">{{ category.name }}</option>
-        </select>
-
-        <!--<input ng-model="editedItem.category" type="text" placeholder="category">-->
-
-        <input type="submit" value="Edit">
-        <input ng-click="cancelEditing()" type="button" value="Cancel">
-    </form>
-</div>
+    <h3><a href="#" ui-sref="ticketer.categories.items.create" ng-click="startCreating()"> + Create item</a></h3>
+</ui-view>
