@@ -18,6 +18,27 @@ angular.module("ticketer.models.items", [
             return items;
         }
 
+        function findItem(itemId) {
+            _.find(items, function(item) {
+                return item.id === parseInt(itemId, 10);
+            })
+        }
+
+        model.getItemById = function (itemId) {
+            var deferred = $q.deffer();
+
+            if (items) {
+                deferred.resolve(findItem(itemId));
+            } else {
+                model.getBookmark()
+                    .then(function () {
+                        deferred.resolve(findItem(itemId));
+                    })
+            }
+
+            return deferred.promise;
+        };
+
         model.getItems = function () {
             return (items) ? $q.when(items) : $http.get(URLS.FETCH).then(cacheItems);
         };
