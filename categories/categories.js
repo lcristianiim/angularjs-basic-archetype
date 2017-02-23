@@ -23,6 +23,9 @@ angular.module("categories", [
     .controller("CategoriesController", function categoriesController(CategoriesModel) {
         var categoriesListController = this;
 
-        categoriesListController.categories = CategoriesModel.getCategories();
+        CategoriesModel.getCategories()
+            .then(function(result) {
+               categoriesListController.categories = result;
+            })
     })
 ;

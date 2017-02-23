@@ -4,15 +4,21 @@ angular.module("ticketer.models.categories", [
     .service("CategoriesModel", function ($http) {
        var model = this,
 
-           categories = [
-               {"id": 0, "name": "Tickets"},
-               {"id": 1, "name": "Taxes"},
-               {"id": 2, "name": "Bils"},
-               {"id": 3, "name": "Food"}
-           ];
+           URLS = {
+               FETCH: "data/categories.json"
+           };
+
+        function extract(result) {
+            return result.data;
+        }
+
+        function cacheCategories(result) {
+            categories = extract(result);
+            return categories;
+        }
 
         model.getCategories = function () {
-            return categories;
+            return $http.get(URLS.FETCH).then(cacheCategories)
         }
     })
 ;

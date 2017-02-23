@@ -21,6 +21,10 @@ angular.module("categories.items", [
         var itemsListController = this;
 
         itemsListController.currentCategoryName = $stateParams.category;
-        itemsListController.items = ItemsModel.getItems();
+
+        ItemsModel.getItems()
+            .then(function(result) {
+                itemsListController.items = result;
+            })
     })
 ;
