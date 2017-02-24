@@ -30,23 +30,40 @@ angular.module("ticketer.models.items", [
             if (items) {
                 deferred.resolve(findItem(itemId));
             } else {
-                model.getBookmark()
-                    .then(function () {
-                        deferred.resolve(findItem(itemId));
-                    })
+                model.getItems().then(function () {
+                    deferred.resolve(findItem(itemId));
+                });
             }
 
             return deferred.promise;
         };
 
         model.getItems = function () {
-            return (items) ? $q.when(items) : $http.get(URLS.FETCH).then(cacheItems);
+            var deffered = $q.defer();
+
+            if(items) {
+               deffered.resolve(items);
+            } else {
+                $http.get(URLS.FETCH).then(function(items) {
+                    deffered.resolve(cacheItems(items));
+                })
+            }
+
+            return deferred.promise;
         };
 
         model.createItem = function (item) {
             // simulating backend
             item.id = items.length;
             items.push(item);
+        };
+
+        model.updateItem = function (item) {
+            var index = _.index("items", function(i) {
+                return i.id === item.id;
+            });
+
+            item[index] = item;
         }
     })
 ;
