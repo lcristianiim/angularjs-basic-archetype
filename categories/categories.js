@@ -15,17 +15,20 @@ angular.module("categories", [
                   },
                    "items@": {
                        templateUrl: "categories/items/items.tmpl.html",
-                       controller: "ItemsController"
+                       controller: "ItemsController as itemsListController"
                    }
                }
            })
     })
-    .controller("CategoriesController", function categoriesController(CategoriesModel) {
+    .controller("CategoriesController", function categoriesController(CategoriesModel, ItemsModel) {
         var categoriesListController = this;
 
         CategoriesModel.getCategories()
             .then(function(result) {
                categoriesListController.categories = result;
             })
+
+
+        categoriesListController.setCurrentCategory = CategoriesModel.setCurrentCategory;
     })
 ;

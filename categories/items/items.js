@@ -36,5 +36,6 @@ angular.module("categories.items", [
 
         itemsListController.getCurrentCategory = CategoriesModel.getCurrentCategory;
         itemsListController.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName;
+        itemsListController.deleteItem = ItemsModel.deleteItem;
     })
 ;

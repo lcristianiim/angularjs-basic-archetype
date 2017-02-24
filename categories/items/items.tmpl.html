@@ -5,9 +5,9 @@
 <ul>
     <li ng-repeat="item in itemsListController.items | filter:{category:itemsListController.getCurrentCategoryName()}">
         {{ item.title }}
-        <a href="#" ui-sref="ticketer.categories.items.edit({itemId:item.id})">Edit</a>
+        <a href="#" ui-sref="ticketer.categories.items.edit({itemId:item.id, itemCategory:item.category})">Edit</a>
 
-        <a href="#" ng-click="deleteItem(item)">Delete</a>
+        <a href="#" ng-click="itemsListController.deleteItem(item)">Delete</a>
     </li>
 </ul>
 

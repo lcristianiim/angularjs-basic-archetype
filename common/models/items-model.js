@@ -64,6 +64,12 @@ angular.module("ticketer.models.items", [
             });
 
             items[index] = item;
+        };
+
+        model.deleteItem = function(item) {
+            _.remove(items, function(i) {
+                return i.id == item.id;
+            });
         }
     })
 ;

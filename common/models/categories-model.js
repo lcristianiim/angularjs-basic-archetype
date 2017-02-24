@@ -42,18 +42,18 @@ angular.module("ticketer.models.categories", [
                     })
             }
             return deffered.promise;
-        }
+        };
 
         model.setCurrentCategory = function(categoryName) {
             return model.getCategoryByName(categoryName)
                 .then(function (category) {
                     currentCategory = category;
                 })
-        }
+        };
 
         model.getCurrentCategory = function () {
             return currentCategory;
-        }
+        };
 
         model.getCurrentCategoryName = function () {
             return currentCategory ? currentCategory.name : "";
