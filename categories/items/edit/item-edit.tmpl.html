@@ -1,14 +1,15 @@
 <div class="edit-toto">
-    <form ng-submit="updateItem(editedItem)">
-        <input ng-model="editedItem.title" type="text" placeholder="title">
+    <h1>Editing {{editItemsController.item.title}}</h1>
+    <form ng-submit="editItemsController.updatedItem(editedItem)">
+        <input ng-model="editItemsController.editedItem.title" type="text" placeholder="title">
 
-        <select ng-model="editedItem.category">
-            <option ng-repeat="category in categories" value="{{category.name}}">{{ category.name }}</option>
+        <select ng-model="editItemsController.editedItem.category">
+            <option ng-repeat="category in editItemsController.categories" value="{{category.name}}">{{ category.name }}</option>
         </select>
 
         <!--<input ng-model="editedItem.category" type="text" placeholder="category">-->
 
-        <input type="submit" value="Edit">
-        <input ng-click="cancelEditing()" type="button" value="Cancel">
+        <input ng-click="editItemsController.updatedItem(editedItem)" type="submit" value="Edit">
+        <input ng-click="editItemsController.cancelEditing()" type="button" value="Cancel">
     </form>
 </div>

@@ -6,13 +6,15 @@
     <li ng-repeat="item in itemsListController.items | filter:{category:itemsListController.getCurrentCategoryName()}">
         {{ item.title }}
         <a href="#" ui-sref="ticketer.categories.items.edit({itemId:item.id})">Edit</a>
+
         <a href="#" ng-click="deleteItem(item)">Delete</a>
     </li>
 </ul>
 
 <ui-view ng-if="itemsListController.getCurrentCategory()"
-         class="create-todo"
-         ui-sref="ticketer.categories.items.create">
+         class="create-todo">
     <hr>
     <h3><a href="#" ui-sref="ticketer.categories.items.create" ng-click="startCreating()"> + Create item</a></h3>
 </ui-view>
+
+

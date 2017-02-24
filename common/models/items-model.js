@@ -19,13 +19,13 @@ angular.module("ticketer.models.items", [
         }
 
         function findItem(itemId) {
-            _.find(items, function(item) {
+            return _.find(items, function(item) {
                 return item.id === parseInt(itemId, 10);
             })
         }
 
-        model.getItemById = function (itemId) {
-            var deferred = $q.deffer();
+        model.getItemById = function(itemId) {
+            var deferred = $q.defer();
 
             if (items) {
                 deferred.resolve(findItem(itemId));
@@ -39,13 +39,13 @@ angular.module("ticketer.models.items", [
         };
 
         model.getItems = function () {
-            var deffered = $q.defer();
+            var deferred = $q.defer();
 
             if(items) {
-               deffered.resolve(items);
+               deferred.resolve(items);
             } else {
                 $http.get(URLS.FETCH).then(function(items) {
-                    deffered.resolve(cacheItems(items));
+                    deferred.resolve(cacheItems(items));
                 })
             }
 
@@ -59,11 +59,11 @@ angular.module("ticketer.models.items", [
         };
 
         model.updateItem = function (item) {
-            var index = _.index("items", function(i) {
+            var index = _.findIndex(items, function(i) {
                 return i.id === item.id;
             });
 
-            item[index] = item;
+            items[index] = item;
         }
     })
 ;
