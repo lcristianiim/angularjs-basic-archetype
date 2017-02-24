@@ -1,4 +1,4 @@
-# `$ AngularJS basic-archetype application`
+# `$ AngularJS basic application`
 
 
 [![AngularJS](http://i.imgur.com/4DTvpLb.png)](http://162.243.86.132:4689)
